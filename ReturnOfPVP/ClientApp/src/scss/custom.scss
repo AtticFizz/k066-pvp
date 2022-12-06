@@ -1,0 +1,127 @@
+/* import the necessary Bootstrap files */
+@import "../../node_modules/bootstrap/scss/functions";
+
+/* make changes to the !default Bootstrap variables */
+
+$secondary: rgb(104, 130, 243);
+
+@import "../../node_modules/bootstrap/scss/variables";
+// Accordion
+$accordion-button-padding-y: $list-group-item-padding-y;
+$accordion-button-padding-x: $list-group-item-padding-x;
+$accordion-body-padding-y: 0px;
+$accordion-body-padding-x: 0px;
+
+$accordion-button-focus-border-color: rgba(0, 0, 0, 0);
+$accordion-button-focus-box-shadow: rgba(0, 0, 0, 0);
+
+$accordion-button-bg: transparent;
+$accordion-button-active-bg: transparent;
+$accordion-button-active-color: $body-color;
+
+$accordion-border-width: 0px;
+
+// List group
+$list-group-border-width: 0px;
+
+$list-group-action-hover-color: $body-color;
+
+$list-group-active-color: $gray-900;
+$list-group-active-bg: $gray-200;
+
+// Modal
+$modal-content-border-width: 0px;
+$modal-header-border-width: 0px;
+
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
+@import "../../node_modules/bootstrap/scss/root";
+
+/* finally, import Bootstrap to set the changes! */
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+html,
+body {
+    height: 100%;
+    overflow-x: hidden;
+}
+
+#root {
+    height: 100vh;
+}
+
+.ck-read-only {
+    --ck-widget-outline-thickness: 0px;
+}
+
+.ck-editor__editable_inline {
+    height: 100%;
+}
+
+.ck-focused {
+    border: none !important;
+}
+
+#textarea {
+    -moz-appearance: textfield-multiline;
+    -webkit-appearance: textarea;
+    overflow: auto;
+    resize: vertical;
+    // min-height: 200px;// height: 240px;
+}
+
+.focus-parent:focus-within {
+    color: $input-color;
+    background-color: $input-focus-bg;
+    border-color: $input-focus-border-color;
+    outline: 0;
+
+    @if $enable-shadows {
+        @include box-shadow($input-box-shadow, $input-focus-box-shadow);
+    }
+
+    @else {
+        // Avoid using mixin so we can pass custom focus shadow properly
+        box-shadow: $input-focus-box-shadow;
+    }
+}
+
+.focus-parent-invalid:focus-within {
+    color: $input-color;
+    background-color: $input-focus-bg;
+    border-color: $form-feedback-invalid-color;
+    outline: 0;
+
+    @if $enable-shadows {
+        @include box-shadow($input-box-shadow, rgba($input-box-shadow, $input-btn-focus-color-opacity));
+    }
+
+    @else {
+        // Avoid using mixin so we can pass custom focus shadow properly
+        // box-shadow: $input-focus-box-shadow;
+        box-shadow: 0 0 $input-btn-focus-blur $input-focus-width rgba($form-feedback-invalid-color, $input-btn-focus-color-opacity);
+    }
+
+}
+
+li {
+    list-style-position: inside;
+}
+
+figure>img {
+    @extend .img-fluid;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: pixelated;
+    -ms-interpolation-mode: nearest-neighbor;
+}
+
+// li::marker {
+//     float: left;
+//     vertical-align: top;
+// }
+
+// li>* {
+//     vertical-align: text-top;
+// }
